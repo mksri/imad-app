@@ -1,59 +1,25 @@
-//counter code
-var button = document.getElementById('counter')
-var counter = 0;
-button.onclick = function(){
-
-  // make a req to the endpoint
-  //capture the res
-//render variable
-
-  // create a request
- var request = new XMLHttpRequest();
-  //capture the responses and store it in variable
-
-  request.onreadystatechange = function(){
-    if(request.readyState === XMLHttpRequest.DONE){
-      //TAKE SOME ACTION
-      if(request.status === 200){
-        var counter = request.responseText;
-        var span = document.getElementById('count');
-        span.innerHTML = counter.toString();
-      }
-    }
-  };
-  //Make the request
-  request.open('GET' , 'http://monikait3038.imad.hasura-app.io/counter' , true);
-  request.send(null);
-  };
-  // submit name
-  var submit = document.getElementById('submit_btn');
-  submit.onclick =function(){
-
-    // create a request
-   var request = new XMLHttpRequest();
-    //capture the responses and store it in variable
-
-    request.onreadystatechange = function(){
-      if(request.readyState === XMLHttpRequest.DONE){
-        //TAKE SOME ACTION
-        if(request.status === 200){
-          var names = request.responseText;
-          names= JSON.parse(names);
-
-          var list = '';
-          for(var i=0; i<names.length;i++){
-
-            list += '<li>' + names[i] + '</li>';
-          }
-          var ul = document.getElementById('namelist');
-          ul.innerHTML = list;
-        }
-      }
-    };
-    //Make the request
-    var nameInput = document.getElementById('name');
-    var name = nameInput.value;
-    request.open('GET' , 'http://monikait3038.imad.hasura-app.io/submit-name?name='+name , true);
-    request.send(null);
-
-};
+<!doctype html>
+<html>
+    <head>
+        <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="center">
+            <img src="https://recruitee.com/hiring-resources/wp-content/uploads/2015/11/photo-1429051883746-afd9d56fbdaf.jpeg" class="img-medium"/>
+        </div>
+        <br>
+        <div class="center text-big bold">
+            Hi! I am your webapp. hello there
+        </div>
+        <hr/>
+        <div class="footer">
+          this button <button id="counter"> Click me!</button> has been clicked <span id="count">0</span> times
+          <br>
+        <input type="text" id="name" placeholder="name"></input>
+          <input type="submit" id="submit_btn" value="submit"></input>
+          <ul id="namelist">
+          </ul>
+        </div>
+        </body>
+      <script src="/ui/main.js"></script>
+</html>
