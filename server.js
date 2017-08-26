@@ -95,10 +95,26 @@ app.get('/counter', function (req, res) {
   res.send(counter.toString());
 });
 
-app.get('/:articleName', function (req, res) {
+app.get('/articles/:articleName', function (req, res) {
 //articleName == article-one
   articleName = req.params.articleName;
-  res.send(createTemplate(articles[articleName]));
+  
+  var articleData = 
+  pool.query("SELECT * FROM article where title=" + req.params.articleName, function(err,result){
+       if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+           if(result.rows.length === 0){
+             res.status(404).send("article not found");  
+           }
+           else{
+               var articleData = result.rows[0];
+               res.send(createTemplate(articleData));
+           }
+        }
+  });
+  
 });
 
 app.get('/article-two', function (req, res) {
