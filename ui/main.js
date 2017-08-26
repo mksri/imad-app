@@ -6,6 +6,7 @@ button.onclick = function(){
   // make a req to the endpoint
   //capture the res
 //render variable
+console.log("hello");
 
   // create a request
  var request = new XMLHttpRequest();
