@@ -5,13 +5,13 @@ var Pool = require('pg').Pool;
 var app = express();
 app.use(morgan('combined'));
 
-var config ={
+var config = {
     user: 'monikait3038',
     database: 'monikait3038',
-    host: 'http://db.imad.hasura-app.io',
+    host: 'db.imad.hasura-app.io',
     port: '5432',
     password: process.env.DB_PASSWORD
-}
+};
 
 var articles ={
 'article-one': {
