@@ -5,9 +5,14 @@ var Pool = require('pg').Pool;
 var app = express();
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(session({
+    secret:'sendsomesecretvalue',
+    cookie: {maxAge: 1000*60*60*24*30}
+}));
 
 var config = {
     user: 'monikait3038',
@@ -135,10 +140,13 @@ pool.query('SELECT * FROM "user" WHERE username=1$',[username], function(err,res
                 //['pbkdf','1000', 'salt',  hashed.toString('hex')].join('$');
                 var hashedPassword = hash(password,salt); // creating a hash with original salt
                 if(hashedPassword ===dbString){
-              res.send('credential is correct'); 
+                    //set a session 
+                    req.session.auth ={userId: result.rows[0].id};
+                    
+                   res.send('credential is correct'); 
                 }
                 else{
-res.send('credential is wrong'); 
+                 res.send('credential is wrong'); 
                 }
             }
            
@@ -146,6 +154,16 @@ res.send('credential is wrong');
     });
 
 });
+
+ app.get('/check-login',function(req,res) {
+     
+   if(req.session && req.session.auth && re.session.auth.userId){
+       res.send('You are logged in');
+   } 
+   else{
+      res.send('not logged in'); 
+   }
+ });
 
 
 
