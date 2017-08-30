@@ -81,6 +81,11 @@ function hash(){
     //how to get hash?
     var hashed = crypto.pbkdf2Sync('input', 'salt', 100000, 512, 'sha512');
     return hashed.toString('hex');
+    
+    // why not we are using normal md5 ?
+    //bcz with normal md5 password = '33456jjfnjgfngjngjgn' - can be found some table
+    // with pbkdf2Sync password + salt('this is some random string') = 'dsfdgfgfgfghghgjjhhhkjkjkjjjlkjlkjlkl' - cannot found in any table
+    // also converted into 1000 times
 }
 
 app.get('/hash/:input',function(req,res){
