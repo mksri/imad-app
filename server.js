@@ -79,9 +79,9 @@ app.get('/', function (req, res) {
 
 function hash(){
     //how to get hash?
-    var hashed = crypto.pbkdf2Sync('input', salt, 100000, 512, 'sha512');
+    var hashed = crypto.pbkdf2Sync('input', 'salt', 100000, 512, 'sha512');
     //return hashed.toString('hex');
-    return ['pbkdf','1000',salt,  hashed.toString('hex')].join('$');
+    return ['pbkdf','1000', 'salt',  hashed.toString('hex')].join('$');
     
     // why not we are using normal md5 ?
     //bcz with normal md5 password = '33456jjfnjgfngjngjgn' - can be found some table
