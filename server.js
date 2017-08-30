@@ -130,7 +130,16 @@ pool.query('SELECT * FROM "user" username=1$',[username], function(err,result){
              res.send(403).send('usename/password is invalid');   
             }
             else{
-              res.send('username successfully created'+username);   
+                var dbString = result.rows[0].password;
+                var salt = dbString.split('$')[2];   
+                //['pbkdf','1000', 'salt',  hashed.toString('hex')].join('$');
+                var hashedPassword = hash(password,salt); // creating a hash with original salt
+                if(hashedPassword ===dbString){
+              res.send('credential is correct'); 
+                }
+                else{
+res.send('credential is wrong'); 
+                }
             }
            
         }
