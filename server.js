@@ -165,6 +165,11 @@ pool.query('SELECT * FROM "user" WHERE username=1$',[username], function(err,res
    }
  });
 
+app.get('/logout',function(req,res) {
+     
+ delete req.session.auth;
+ res.send('logout');
+ });
 
 
 
