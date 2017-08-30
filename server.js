@@ -103,7 +103,7 @@ pool.query('INSERT * FROM "user"(username,password) VALUES (1$,2$)',[username,db
             res.status(500).send(err.toString());
         }
         else{
-            res.send(JSON.stringify(result.rows));
+            res.send('username successfully created'+username);
         }
     });
 
