@@ -25,7 +25,39 @@ console.log("hello");
   //Make the request
   request.open('GET' , 'http://monikait3038.imad.hasura-app.io/counter' , true);
   request.send(null);
-  };
+
+// submit username/password
+  var submit = document.getElementById('submit_btn');
+  submit.onclick =function(){
+
+    // create a request
+   var request = new XMLHttpRequest();
+    //capture the responses and store it in variable
+
+    request.onreadystatechange = function(){
+      if(request.readyState === XMLHttpRequest.DONE){
+        //TAKE SOME ACTION
+        if(request.status === 200){
+        console.log("logged in");
+        }
+        else{
+         console.log("somethin went wrong");
+        }
+      }
+    };
+    //Make the request
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    
+    var name = nameInput.value;
+    request.open('POST' , 'http://monikait3038.imad.hasura-app.io/login , true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(JSON.stringfy({username:username,password:password}));
+
+};
+
+  
+  
   // submit name
   var submit = document.getElementById('submit_btn');
   submit.onclick =function(){
