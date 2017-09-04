@@ -50,7 +50,7 @@ console.log("hello");
     var password = document.getElementById('password').value;
     
     var name = nameInput.value;
-    request.open('POST' , 'http://monikait3038.imad.hasura-app.io/login , true);
+    request.open('POST' , 'http://monikait3038.imad.hasura-app.io/login' , true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringfy({username:username,password:password}));
 
