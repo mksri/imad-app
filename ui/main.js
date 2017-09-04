@@ -1,7 +1,7 @@
 //counter code
-var button = document.getElementById('counter')
-var counter = 0;
-button.onclick = function(){
+//var button = document.getElementById('counter')
+//var counter = 0;
+/*button.onclick = function(){
 
   // make a req to the endpoint
   //capture the res
@@ -25,7 +25,7 @@ console.log("hello");
   //Make the request
   request.open('GET' , 'http://monikait3038.imad.hasura-app.io/counter' , true);
   request.send(null);
-};
+};*/
 
 // submit username/password
   var submit = document.getElementById('submit_btn');
@@ -57,8 +57,6 @@ console.log("hello");
 
 };
 
-  
-  
   // submit name
   var submit = document.getElementById('submit_btn');
   submit.onclick =function(){
