@@ -25,6 +25,7 @@ console.log("hello");
   //Make the request
   request.open('GET' , 'http://monikait3038.imad.hasura-app.io/counter' , true);
   request.send(null);
+};
 
 // submit username/password
   var submit = document.getElementById('submit_btn');
@@ -88,6 +89,5 @@ console.log("hello");
     var name = nameInput.value;
     request.open('GET' , 'http://monikait3038.imad.hasura-app.io/submit-name?name='+name , true);
     request.send(null);
-
 };
 
